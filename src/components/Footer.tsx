@@ -21,7 +21,7 @@ export default function Footer({ currentCurrency }: FooterProps) {
       </div>
       <button
         type="button"
-        className="result__button"
+        className="result__button btn"
         onClick={() => setIsRounded(!isRounded)}
       >
         {isRounded ? "Désarondir" : "Arrondir"}

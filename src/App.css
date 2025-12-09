@@ -37,10 +37,13 @@ body {
 	height: 100vh;
 	width: 80%;
 	max-width: 768px;
-	margin: 0 auto;
+	margin: 2rem auto;
 	color: var(--color-main);
 	background-color: var(--color-light);
 	text-align: center;
+	border-radius: 1.5rem;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+	overflow: hidden;
 }
 
 .header {
@@ -64,13 +67,15 @@ body {
 
 .currencies {
 	color: var(--color-main);
-	overflow: scroll;
+	overflow-y: auto;
 }
 
 .currency {
 	font-size: 1.5rem;
 	border-top: 1px solid var(--color-alt);
-	transition: background-color 1s;
+	transition: background-color 0.2s ease;
+	padding: 0.7rem 1.2rem;
+	text-align: left;
 }
 
 .currency:hover {
@@ -86,9 +91,23 @@ body {
 .currency__button {
 	width: 100%;
 	font-size: 1rem;
-	font-weight: 400;
+	font-weight: 500;
 	cursor: pointer;
-	padding: 1rem;
+	padding: 0.3rem 0;
+	text-align: left;
+}
+
+.currency__details {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.2rem;
+}
+
+.currency__rate {
+    font-size: 0.9rem;
+    font-weight: 400;
+    opacity: 0.8;
 }
 
 .result {
@@ -109,16 +128,51 @@ body {
 
   .result__button {
     margin-top: 1rem;
-    width: 120px;
-    cursor: pointer;
-    border: 1px solid var(--color-main);
-    padding: 1rem;
-    border-radius: 50px;
+}
 
-    background-color: var(--color-light);
-    color: var(--color-main);
-  }
   .result__button:hover {
     background-color: var(--color-main);
     color: var(--color-light);
   }
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-main);
+  background-color: var(--color-light);
+  color: var(--color-main);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-main);
+  color: var(--color-light);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
+}
+
+.btn--small {
+  padding: 0.3rem 0.9rem;
+  font-size: 0.8rem;
+}
+
+.btn--full {
+  width: 100%;
+}
+
