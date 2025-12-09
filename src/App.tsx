@@ -2,29 +2,30 @@ import { useState } from 'react';
 import './App.css';
 import currencies, { ICurrency } from './data/currencies';
 import Footer from './component/Footer';
+import Currency from './component/Currency';
 
 export default function App() {
 
 	// On crée un state afin de manipuler la devise courante
-	// on l'initialise avec la première devise du tableau importé
-	// useState on a : const [ ValeurActuelle, modificationDeValeurActuelle ] = useState(valeurDeDépart) ?
-	const [currentCurrency, setCurrentCurrency] = useState(currencies[0])
-	const [isRounded, setIsRounded] = useState(false);
+    // on l'initialise avec la première devise du tableau importé
+    // useState on a : const [ ValeurActuelle, modificationDeValeurActuelle ] = useState(valeurDeDépart) ?
+    const [currentCurrency, setCurrentCurrency] = useState(currencies[0])
+    const [isRounded, setIsRounded] = useState(false);
 
-	// On crée une fonction pour selectionner la devise souhaitée
-	// const handleCurrentCurrencyClick = (currency : ICurrency) => {
-	// 	setCurrentCurrency(currency)
-	// }
-	// On défini une variable placeholder qui sera remplacée par le paramètre d'entrée à l'utilisation de la fonction, ici banane
-	function handleCurrentCurrencyClick(banane : ICurrency) {
-		setCurrentCurrency(banane)
-	}
+    // On crée une fonction pour selectionner la devise souhaitée
+    // const handleCurrentCurrencyClick = (currency : ICurrency) => {
+    // 	setCurrentCurrency(currency)
+    // }
+    // On défini une variable placeholder qui sera remplacée par le paramètre d'entrée à l'utilisation de la fonction, ici banane
+    function handleCurrentCurrencyClick(banane : ICurrency) {
+        setCurrentCurrency(banane)
+    }
 
-	function handleRoundClick () {
-		setIsRounded(!isRounded)
-	}
+    function handleRoundClick () {
+        setIsRounded(!isRounded)
+    }
 
-	console.log(isRounded)
+    console.log(isRounded)
 
 	return (
 		<div className="app">
@@ -34,13 +35,7 @@ export default function App() {
 			</header>
 
 			<ul className="currencies">
-
-				{/* Je boucle sur chaque entrée de tableau grâce à la variable "currency" et je crée une li pour chaque currency */}
-				{currencies.map((currency) =>
-					<li className="currency" key={currency.code}>< button type="button" onClick={() => handleCurrentCurrencyClick(currency)} className={currency === currentCurrency ? "currency__button selected" : "currency__button"}>
-						{currency.description}
-					</button></li>
-				)}
+				<Currency currentCurrency={currentCurrency} handleCurrentCurrencyClick={handleCurrentCurrencyClick} />
 			</ul>
 
 			{/*<footer className="result">
