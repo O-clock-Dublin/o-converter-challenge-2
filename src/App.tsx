@@ -1,52 +1,69 @@
-import { useState } from 'react';
-import './App.css';
-import currencies, { ICurrency } from './data/currencies';
+// src/App.tsx
+import { useState } from "react";
+import "./App.css";
+import currencies, { ICurrency } from "./data/currencies";
+import Footer from "./components/Footer";
 
+/**
+ * Composant principal de l'application de conversion.
+ *
+ * @remarks
+ * Ce composant gère uniquement la devise sélectionnée via
+ * l'état `currentCurrency`. L'état lié à l'arrondi est délégué
+ * au composant `Footer` afin de limiter les re-rendus inutiles.
+ *
+ * @returns Le JSX racine de l'application.
+ */
 export default function App() {
+  /**
+   * Devise actuellement sélectionnée par l'utilisateur.
+   *
+   * @remarks
+   * La valeur initiale est la première entrée du tableau `currencies`.
+   */
+  const [currentCurrency, setCurrentCurrency] = useState<ICurrency>(
+    currencies[0]
+  );
 
-	// On crée un state afin de manipuler la devise courante
-	// on l'initialise avec la première devise du tableau importé
-	// useState on a : const [ ValeurActuelle, modificationDeValeurActuelle ] = useState(valeurDeDépart) ?
-	const [currentCurrency, setCurrentCurrency] = useState(currencies[0])
-	const [isRounded, setIsRounded] = useState(false);
+  /**
+   * Met à jour la devise courante à partir d'une devise choisie.
+   *
+   * @param selectedCurrency - La devise choisie par l'utilisateur.
+   */
+  const handleCurrentCurrencyClick = (selectedCurrency: ICurrency) => {
+    setCurrentCurrency(selectedCurrency);
+  };
 
-	// On crée une fonction pour selectionner la devise souhaitée
-	// const handleCurrentCurrencyClick = (currency : ICurrency) => {
-	// 	setCurrentCurrency(currency)
-	// }
-	// On défini une variable placeholder qui sera remplacée par le paramètre d'entrée à l'utilisation de la fonction, ici banane
-	function handleCurrentCurrencyClick(banane : ICurrency) {
-		setCurrentCurrency(banane)
-	}
+  return (
+    <div className="app">
+      <header className="header">
+        <h1 className="header__title">Converter</h1>
+        <div className="header__value">1 euro</div>
+      </header>
 
-	function handleRoundClick () {
-		setIsRounded(!isRounded)
-	}
+      <ul className="currencies">
+        {currencies.map((currency) => (
+          <li
+            className={
+              currency.code === currentCurrency.code
+                ? "currency selected"
+                : "currency"
+            }
+            key={currency.code}
+          >
+            <button
+              type="button"
+              onClick={() => handleCurrentCurrencyClick(currency)}
+              className="currency__button"
+            >
+              {currency.description}
+            </button>
+          </li>
+        ))}
+      </ul>
 
-	console.log(isRounded)
-
-	return (
-		<div className="app">
-			<header className="header">
-				<h1 className="header__title">Converter</h1>
-				<div className="header__value">1 euro</div>
-			</header>
-
-			<ul className="currencies">
-
-				{/* Je boucle sur chaque entrée de tableau grâce à la variable "currency" et je crée une li pour chaque currency */}
-				{currencies.map((currency) =>
-					<li className="currency" key={currency.code}>< button type="button" onClick={() => handleCurrentCurrencyClick(currency)} className={currency === currentCurrency ? "currency__button selected" : "currency__button"}>
-						{currency.description}
-					</button></li>
-				)}
-			</ul>
-
-			<footer className="result">
-				<div className="result__amount">{isRounded ? currentCurrency.rate.toFixed(2) : currentCurrency.rate}</div>
-				<div className="result__currency">{currentCurrency.description}</div>
-				<button onClick={handleRoundClick} type="button" className="result__button" >{isRounded ? "Désarondir" : "Arrondir"}</button>
-			</footer>
-		</div>
-	);
+      {/* Le Footer reçoit la devise courante via les props */}
+      <Footer currentCurrency={currentCurrency} />
+    </div>
+  );
 }
