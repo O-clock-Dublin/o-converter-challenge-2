@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
 import './App.css';
 import currencies, { ICurrency } from './data/currencies';
 import Footer from './component/Footer';
@@ -13,12 +14,16 @@ export default function App() {
     const [isRounded, setIsRounded] = useState(false);
 	const [roundedMap, setRoundedMap] = useState<Record<string, boolean>>({})
 
+	    // on garde en mémoire la devise précédente
+    const [previousCurrency, setPreviousCurrency] = useState<ICurrency | null>(null);
+
     // On crée une fonction pour selectionner la devise souhaitée
     // const handleCurrentCurrencyClick = (currency : ICurrency) => {
     // 	setCurrentCurrency(currency)
     // }
     // On défini une variable placeholder qui sera remplacée par le paramètre d'entrée à l'utilisation de la fonction, ici banane
     function handleCurrentCurrencyClick(banane : ICurrency) {
+		setPreviousCurrency(currentCurrency);
         setCurrentCurrency(banane)
     }
 
@@ -32,8 +37,16 @@ export default function App() {
             [currency.code]: !prev[currency.code]   // toggle seulement cette devise
         }));
     }
+	
+	// réinitialiser l'ancien toggle quand on change de devise
+     useEffect(() => {
+        if (!previousCurrency) return; // première sélection → rien à réinitialiser
 
-    console.log(isRounded)
+        setRoundedMap(prev => ({
+            ...prev,
+            [previousCurrency.code]: false // remettre anciens ON → OFF
+        }));
+    }, [currentCurrency]); // se déclenche uniquement quand la devise change
 
 	return (
 		<div className="app">
