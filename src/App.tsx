@@ -11,6 +11,7 @@ export default function App() {
     // useState on a : const [ ValeurActuelle, modificationDeValeurActuelle ] = useState(valeurDeDépart) ?
     const [currentCurrency, setCurrentCurrency] = useState(currencies[0])
     const [isRounded, setIsRounded] = useState(false);
+	const [roundedMap, setRoundedMap] = useState<Record<string, boolean>>({})
 
     // On crée une fonction pour selectionner la devise souhaitée
     // const handleCurrentCurrencyClick = (currency : ICurrency) => {
@@ -25,6 +26,13 @@ export default function App() {
         setIsRounded(!isRounded)
     }
 
+	function handleToggleRoundClick(currency: ICurrency) {
+        setRoundedMap(prev => ({
+            ...prev,
+            [currency.code]: !prev[currency.code]   // toggle seulement cette devise
+        }));
+    }
+
     console.log(isRounded)
 
 	return (
@@ -35,14 +43,13 @@ export default function App() {
 			</header>
 
 			<ul className="currencies">
-				<Currency currentCurrency={currentCurrency} handleCurrentCurrencyClick={handleCurrentCurrencyClick} isRounded={isRounded} handleRoundClick={handleRoundClick} />
+				<Currency 
+				currentCurrency={currentCurrency} 
+				handleCurrentCurrencyClick={handleCurrentCurrencyClick} 
+				roundedMap={roundedMap}
+				handleToggleRoundClick={handleToggleRoundClick} />
 			</ul>
 
-			{/*<footer className="result">
-				<div className="result__amount">{isRounded ? currentCurrency.rate.toFixed(2) : currentCurrency.rate}</div>
-				<div className="result__currency">{currentCurrency.description}</div>
-				<button onClick={handleRoundClick} type="button" className="result__button" >{isRounded ? "Désarondir" : "Arrondir"}</button>
-			</footer>*/}
 
 			<Footer currentCurrency={currentCurrency} isRounded={isRounded} handleRoundClick={handleRoundClick} />
 		</div>

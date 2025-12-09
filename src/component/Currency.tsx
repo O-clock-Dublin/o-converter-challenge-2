@@ -1,8 +1,8 @@
 import currencies from "../data/currencies";
 
-export default function Currency( { currentCurrency, handleCurrentCurrencyClick, isRounded, handleRoundClick } : { 
+export default function Currency( { currentCurrency, handleCurrentCurrencyClick, roundedMap, handleToggleRoundClick } : { 
     currentCurrency: any; handleCurrentCurrencyClick: 
-    (currency: any) => void; isRounded: boolean; handleRoundClick: 
+    (currency: any) => void; roundedMap: Record<string, boolean>; handleToggleRoundClick: 
     (currency: any) => void 
 }) {
 	return (
@@ -17,12 +17,14 @@ export default function Currency( { currentCurrency, handleCurrentCurrencyClick,
 					>
 						{currency.description}
 					</button>
+                    {currency === currentCurrency ? <div>{roundedMap[currency.code] ? currency.rate.toFixed(2) : currency.rate}</div> : null}
+                    
                     <button
                         type="button"
-                        onClick={() => handleRoundClick(currency)}
+                        onClick={() => handleToggleRoundClick(currency)}
                         className= "toggle_button"
                     >
-                        {isRounded ? "ON" : "OFF"}
+                        {roundedMap[currency.code] ? "ON" : "OFF"}
                     </button>
 				</li>
 			)}
