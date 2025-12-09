@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import currencies, { ICurrency } from './data/currencies';
 import Footer from './components/Footer';
-
+import Currency from './components/Currency';
 
 export default function App() {
 
@@ -36,12 +36,9 @@ export default function App() {
 
 			<ul className="currencies">
 
-				{/* Je boucle sur chaque entrée de tableau grâce à la variable "currency" et je crée une li pour chaque currency */}
-				{currencies.map((currency) =>
-					<li className="currency" key={currency.code}>< button type="button" onClick={() => handleCurrentCurrencyClick(currency)} className={currency === currentCurrency ? "currency__button selected" : "currency__button"}>
-						{currency.description}
-					</button></li>
-				)}
+			{currencies.map((currency) => (
+				<Currency key={currency.code} currency={currency} />
+			))}
 			</ul>
 <Footer 
 	currentCurrency ={ currentCurrency} 
