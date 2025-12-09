@@ -135,6 +135,3 @@ body {
 .rate-button:hover {
 	cursor: pointer;
 }
-.hidden {
-	opacity: 0;
-}
