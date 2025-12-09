@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import currencies, { ICurrency } from './data/currencies';
-import Footer from './components/footer';
+import Footer from './components/Footer';
 
 
 export default function App() {
@@ -46,6 +46,7 @@ export default function App() {
 <Footer 
 	currentCurrency ={ currentCurrency} 
 	handleRoundClick = {handleRoundClick}
+	isRounded =  {isRounded}
 />
 			
 		</div>
