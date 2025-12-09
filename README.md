@@ -1,128 +1,33 @@
-# oConverter
+# oConverter suite
 
-Crée une interface en `React` pour afficher une liste de devises 💪
+Optimisons notre interface en découpant en sous composants.
+Si tu n'as pas terminé le challenge d'hier, récupère le code de la correction sur le repo du prof.
 
-<img src="./docs/result.gif" width="300px">
+## Étape 1 : Création du composant Footer
 
-## Étape 0 : prise en main
+A chaque fois que l'event click du bouton arrondir survient, le state `isRounded` est modifié donc TOUT le composant App refait un rendu !
+Ce n'est pas très optimisé, on va créer un composant Footer contenant uniquement le resultat et ayant son propre état local. Ainsi quand isRounded sera modifié il n'y aura QUE le composant Footer qui refera son rendu.
 
-Installe les dépendances avec ton package manager préféré :
-- `npm install` 
-- ou `pnpm install`
+Le composant Footer aura besoin de savoir quelle est la devise selectionnée donc il faudra la lui envoyer via une prop.
 
-Jete un oeil aux fichiers existants :
-- `src/App.tsx` : contient le composant principal
-- `src/App.css` : contient le code `CSS`
-- `data/currencies.ts` : contient les données des différentes devises.
+- Créé un composant Footer qui renvoi le JSX du footer
+- Déplace le state isRounded de App dans Footer
 
-## Étape 1 : affichage de toutes les devises
+## Étape 2 : Création du composant Currency
 
-Depuis le composant App, importe le tableau contenant les devises et avec map transforme le en un tableau d'elements JSX pour afficher les devises sur la page.
+Sur chaque li de devise, on veut ajouter le taux arrondi ainsi qu'un boutton pour l'afficher ou le cacher. On va créer un composant Currency qui s'occupe du JSX d'un li et qui possedera un état local "isRateDisplayed".
 
-## Étape 2 : ajout d'un état pour la devise choisie
+- Créé un composant Currency qui renvoi le li d'une devise accompagné du taux
+- Ajoute un bouton "afficher/cacher" le taux
+- Ajoute un état local au composant Currency
+- utilise le pour piloter l'affichage du taux
+- modifie le au clique sur le bouton "afficher/cacher"
 
-Créer un état pour stocker le choix de la devise de l'utilisateur : 
-- la valeur initiale doit être la première de la liste des devises
-- pense à bien nommer les variables en suivant les conventions
-- pour l'instant, le setter n'est pas utilisé, mais ça ne saurait tarder !
+Résultat attendu : 
 
-Affiche ensuite les valeurs de la devise choisi dans le `<footer>` du composant, de sorte à ce qu'il reflète le futur choix de l'utilisateur. 
+![afficher-cacher-taux](https://github.com/user-attachments/assets/8267330b-f116-4ddc-b95c-804bbe0a9882)
 
-<details><summary>
-Un peu d'aide ?
-</summary>
 
-```tsx
-// Etat et setter
-const [selectedCurrency, setSelectedCurrency] = useState(currencies[0]);
+## Étape 3 : Plus de découpage
 
-// Rendu
-<footer>
-  <div className="result__amount">{selectedCurrency.rate}</div>
-</footer>
-```
-
-</details>
-
-## Étape 3 : modification de l'état au clic sur une devise
-
-Lors d'un clic sur l'une des devises de la liste, le `<footer>` doit maintenant s'actualiser avec les informations de la devise choisie par l'utilisateur.
-
-<details><summary>
-Un peu d'aide ?
-</summary>
-
-Ecoute le clic sur un `<button>` à l'aide de l'attribut `onClick={() => {}}` et utiliser le setter avec la valeur de la devise dans le callback fourni.
-
-</details>
-
-# BONUS
-
-Bravo si tu as tout fini, tu peux passer aux bonus 💪
-
-## BONUS 1 : ajout conditionnel d'une classe
-
-Fais en sorte d'ajouter la classe `selected` sur le `<button>` qui a été sélectionné par l'utilisateur.
-
-<details><summary>
-Un peu d'aide ?
-</summary>
-
-```jsx
-className={CONDITION ? "currency__button selected" : "currency__button"}
-```
-
-Reste à trouver la bonne condition !
-
-</details>
-
-## BONUS 2 : ajout d'un bouton pour arrondir
-
-Ajoute et fait fonctionner un bouton pour arrondir le taux de la devise choisie à deux chiffres après la virgule.
-
-<details><summary>
-Un peu d'aide ? 
-</summary>
-
-- Créer un bouton "Arrondir" dans le `<footer>`
-  - (avec une petite classe `result__button` par exemple)
-- Lui ajouter un peu de CSS en s'inspirant du code SCSS des autres classes du footer.
-  - (pas besoin que ça brille non plus, on s'inspire du screenshot plus haut)
-- Créer un état pour stocker le choix d'arrondir ou non 
-  - (un booléen par exemple)
-- Au clic sur le bouton, changer la valeur de cet état 
-  - (en son opposé par exemple)
-- Selon la valeur de l'état, afficher le texte "Arrondir" ou "Désarrondir" sur le bouton
-  - (ça clic et sa déclic !)
-- Selon la valeur de l'état, arrondir le taux à deux chiffres après la virgule
-  - (on pense à la méthode `toFixed(2)` des `number`, très pratique !)
-
-</details>
-
-<details><summary>
-« J'ai la flemme d'écrire du CSS »
-</summary>
-
-Ouais je te reconnais bien là !
-
-```scss
-  .result__button {
-    margin-top: 1rem;
-    width: 120px;
-    cursor: pointer;
-    border: 1px solid var(--color-main);
-    padding: 1rem;
-    border-radius: 50px;
-
-    background-color: var(--color-light);
-    color: var(--color-main);
-  }
-  .result__button:hover {
-    background-color: var(--color-main);
-    color: var(--color-light);
-  }
-```
-
-</details>
-
-</details>
+Créé des sous composant pour les morceaux d'IU qu'il te semble pertinent d'isoler.
