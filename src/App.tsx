@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import currencies, { ICurrency } from './data/currencies';
+import Footer from './components/Footer';
 
 export default function App() {
 
@@ -8,7 +9,7 @@ export default function App() {
 	// on l'initialise avec la première devise du tableau importé
 	// useState on a : const [ ValeurActuelle, modificationDeValeurActuelle ] = useState(valeurDeDépart) ?
 	const [currentCurrency, setCurrentCurrency] = useState(currencies[0])
-	const [isRounded, setIsRounded] = useState(false);
+	
 
 	// On crée une fonction pour selectionner la devise souhaitée
 	// const handleCurrentCurrencyClick = (currency : ICurrency) => {
@@ -19,11 +20,11 @@ export default function App() {
 		setCurrentCurrency(banane)
 	}
 
-	function handleRoundClick () {
-		setIsRounded(!isRounded)
-	}
+	// function handleRoundClick () {
+	// 	setIsRounded(!isRounded)
+	// }
 
-	console.log(isRounded)
+	// console.log(isRounded)
 
 	return (
 		<div className="app">
@@ -42,11 +43,8 @@ export default function App() {
 				)}
 			</ul>
 
-			<footer className="result">
-				<div className="result__amount">{isRounded ? currentCurrency.rate.toFixed(2) : currentCurrency.rate}</div>
-				<div className="result__currency">{currentCurrency.description}</div>
-				<button onClick={handleRoundClick} type="button" className="result__button" >{isRounded ? "Désarondir" : "Arrondir"}</button>
-			</footer>
+			<Footer childcurrentCurrency={currentCurrency} />
+
 		</div>
 	);
 }
