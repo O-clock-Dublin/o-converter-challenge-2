@@ -1,9 +1,9 @@
-import currencies from "../data/currencies";
+import currencies, { ICurrency } from "../data/currencies";
 
 export default function Currency( { currentCurrency, handleCurrentCurrencyClick, roundedMap, handleToggleRoundClick } : { 
-    currentCurrency: any; handleCurrentCurrencyClick: 
-    (currency: any) => void; roundedMap: Record<string, boolean>; handleToggleRoundClick: 
-    (currency: any) => void 
+    currentCurrency: ICurrency; handleCurrentCurrencyClick: 
+    (currency: ICurrency) => void; roundedMap: Record<string, boolean>; handleToggleRoundClick: 
+    (currency: ICurrency) => void 
 }) {
 	return (
 		<ul>
