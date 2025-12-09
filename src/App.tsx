@@ -35,7 +35,7 @@ export default function App() {
 			</header>
 
 			<ul className="currencies">
-				<Currency currentCurrency={currentCurrency} handleCurrentCurrencyClick={handleCurrentCurrencyClick} />
+				<Currency currentCurrency={currentCurrency} handleCurrentCurrencyClick={handleCurrentCurrencyClick} isRounded={isRounded} handleRoundClick={handleRoundClick} />
 			</ul>
 
 			{/*<footer className="result">

@@ -1,6 +1,10 @@
 import currencies from "../data/currencies";
 
-export default function Currency( { currentCurrency, handleCurrentCurrencyClick } : { currentCurrency: any; handleCurrentCurrencyClick: (currency: any) => void }) {
+export default function Currency( { currentCurrency, handleCurrentCurrencyClick, isRounded, handleRoundClick } : { 
+    currentCurrency: any; handleCurrentCurrencyClick: 
+    (currency: any) => void; isRounded: boolean; handleRoundClick: 
+    (currency: any) => void 
+}) {
 	return (
 		<ul>
 			{/* Je boucle sur chaque entrée de tableau grâce à la variable "currency" et je crée une li pour chaque currency */}
@@ -13,6 +17,13 @@ export default function Currency( { currentCurrency, handleCurrentCurrencyClick 
 					>
 						{currency.description}
 					</button>
+                    <button
+                        type="button"
+                        onClick={() => handleRoundClick(currency)}
+                        className= "toggle_button"
+                    >
+                        {isRounded ? "ON" : "OFF"}
+                    </button>
 				</li>
 			)}
 		</ul>
