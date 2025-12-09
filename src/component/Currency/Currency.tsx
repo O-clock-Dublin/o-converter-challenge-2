@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ICurrency } from "../data/currencies";
-import DisplayRateButton from "./displayRateButton";
+import { ICurrency } from "../../data/currencies";
+import HideButton from "../utils/HideButton";
 
 export default function Currency(
   { currency, currentCurrency, setCurrentCurrency } 
@@ -27,7 +27,7 @@ export default function Currency(
           </span>
         </button>
         <button type="button" className="rate-button" onClick={handleDisplayRateClick}>
-          <DisplayRateButton 
+          <HideButton 
             size={"24"}
             color={"#bb5432"}
             isClick={!displayRate}

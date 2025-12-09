@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ICurrency } from "../data/currencies";
+import { ICurrency } from "../../data/currencies";
 
 export default function Footer({ currency } : { currency: ICurrency }) {
 	const [isRounded, setIsRounded] = useState(false);

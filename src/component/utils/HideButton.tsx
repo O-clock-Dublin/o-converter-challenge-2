@@ -1,4 +1,4 @@
-export default function DisplayRateButton({size, color, isClick} : {size : string, color: string, isClick: boolean}) {
+export default function HideButton({size, color, isClick} : {size : string, color: string, isClick: boolean}) {
   if(isClick) {
     return (
       <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
