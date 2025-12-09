@@ -24,7 +24,10 @@ export default function App() {
       </header>
 
       <ul className="currencies">
-        <Currency setCurrentCurrency={setCurrentCurrency} />
+        <Currency
+          setCurrentCurrency={setCurrentCurrency}
+          currentCurrency={currentCurrency}
+        />
       </ul>
       <Footer currentCurrency={currentCurrency} />
     </div>
