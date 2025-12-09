@@ -30,14 +30,17 @@ export const Currency = ({
           👀
         </button>
       ) : (
-        <button
-          type="button"
-          onClick={() => {
-            handleVisibleClick(isVisible);
-          }}
-        >
-          ❌
-        </button>
+        <>
+          <p>{currency.rate.toFixed(2)}</p>
+          <button
+            type="button"
+            onClick={() => {
+              handleVisibleClick(isVisible);
+            }}
+          >
+            ❌
+          </button>
+        </>
       )}
 
       <button
