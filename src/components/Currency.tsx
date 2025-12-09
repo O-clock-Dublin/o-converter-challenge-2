@@ -5,7 +5,8 @@ export const Currency = ({
   setCurrentCurrency,
   currentCurrency,
 }: {
-  setCurrentCurrency: ICurrency;
+  setCurrentCurrency: (currency: ICurrency) => void;
+  currentCurrency: ICurrency;
 }) => {
   function handleCurrentCurrencyClick(banane: ICurrency) {
     setCurrentCurrency(banane);
