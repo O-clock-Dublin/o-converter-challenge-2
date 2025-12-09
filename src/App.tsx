@@ -4,6 +4,7 @@ import "./App.css";
 import currencies, { ICurrency } from "./data/currencies";
 import Footer from "./components/Footer";
 import Currency from "./components/Currency";
+import Header from "./components/Header";
 
 /**
  * Composant principal de l'application de conversion.
@@ -37,10 +38,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <header className="header">
-        <h1 className="header__title">Converter</h1>
-        <div className="header__value">1 euro</div>
-      </header>
+		<Header />
 
 <ul className="currencies">
   {currencies.map((currency) => (
