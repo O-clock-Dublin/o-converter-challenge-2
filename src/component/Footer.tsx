@@ -1,10 +1,7 @@
-import { ICurrency } from "../data/currencies";
+import FooterProps from "../type/Footer";
 
-interface FooterProps {
-    currentCurrency: ICurrency;
-    isRounded: boolean;
-    handleRoundClick: () => void;
-}
+
+
 export default function Footer({ currentCurrency, isRounded, handleRoundClick }: FooterProps) {
     return (
         <footer className="result">
