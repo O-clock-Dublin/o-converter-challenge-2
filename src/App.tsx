@@ -18,7 +18,9 @@ export default function App() {
 			<ul className="currencies">
 				{currencies.map((currency) => {
 					return (
-						<Currency currency={currency} currentCurrency={currentCurrency} setCurrentCurrency={setCurrentCurrency}/>
+      			<li className="currency" key={currency.code}>
+							<Currency currency={currency} currentCurrency={currentCurrency} setCurrentCurrency={setCurrentCurrency}/>
+						</li>
 					)
 				}
 				)}

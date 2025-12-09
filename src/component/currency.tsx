@@ -19,11 +19,11 @@ export default function Currency(
     }
 
     return(
-      <li className="currency" key={currency.code}>
+      <>
         < button type="button" onClick={() => handleCurrentCurrencyClick(currency)} className={currency.code === currentCurrency.code ? "currency__button selected" : "currency__button"}>
           {currency.description}
           <span className= {displayRate ? "currency__rate" : "currency__rate hidden"}>
-            ({currency.rate})
+            ({currency.rate.toFixed(2)})
           </span>
         </button>
         <button type="button" className="rate-button" onClick={handleDisplayRateClick}>
@@ -33,6 +33,6 @@ export default function Currency(
             isClick={!displayRate}
           />
         </button>
-      </li>
+      </>
     )
 }
