@@ -68,9 +68,12 @@ body {
 }
 
 .currency {
+	display: flex;
+  	align-items: center;
+  	justify-content: space-between;
 	font-size: 1.5rem;
-	border-top: 1px solid var(--color-alt);
-	transition: background-color 1s;
+	border-top: 1px solid /*var(--color-alt);
+	transition: background-color 1s;*/
 }
 
 .currency:hover {
@@ -121,4 +124,11 @@ body {
   .result__button:hover {
     background-color: var(--color-main);
     color: var(--color-light);
+  }
+
+  .toggle_button {
+
+	padding: 4px 8px;
+  	font-size: 0.8rem;
+  	cursor: pointer;
   }
