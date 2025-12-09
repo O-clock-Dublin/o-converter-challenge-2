@@ -3,139 +3,142 @@
 
 /* --- Variables CSS --- */
 :root {
-	--color-main: #bb5432;
-	--color-alt: #f1c5b6;
-	--color-light: #fff;
+  --color-main: #bb5432;
+  --color-alt: #f1c5b6;
+  --color-light: #fff;
+
+  --radius-card: 1.5rem;
+  --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
-/* --- Reset --- */
-* {
-	margin: 0;
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
 }
 
 ul {
-	list-style: none;
-	padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 button {
-	color: inherit;
-	background-color: inherit;
-	border: none;
+  color: inherit;
+  background-color: inherit;
+  border: none;
+  font: inherit;
 }
 
-/* --- Commons --- */
+/* --- Body --- */
 body {
-	font-family: "League Spartan", sans-serif;
-	background-color: var(--color-alt);
+  font-family: "League Spartan", sans-serif;
+  background-color: var(--color-alt);
 }
 
-/* --- App component --- */
+/* --- Layout principal --- */
 .app {
-	display: grid;
-	grid-template-rows: auto 1fr auto;
-	height: 100vh;
-	width: 80%;
-	max-width: 768px;
-	margin: 2rem auto;
-	color: var(--color-main);
-	background-color: var(--color-light);
-	text-align: center;
-	border-radius: 1.5rem;
-	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-	overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  width: 80%;
+  max-width: 768px;
+  margin: 2rem auto;
+  color: var(--color-main);
+  background-color: var(--color-light);
+  text-align: center;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
 }
 
+/* --- Header --- */
 .header {
-	background-color: var(--color-main);
-	color: var(--color-light);
-	padding: 2rem;
-	letter-spacing: .2rem;
-	font-weight: 300;
+  background-color: var(--color-main);
+  color: var(--color-light);
+  padding: 2rem;
+  letter-spacing: 0.2rem;
+  font-weight: 300;
 }
 
 .header__title {
-	font-size: 2.5rem;
-	font-weight: 500;
-	margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 .header__value {
-	font-size: 1.2rem;
-	font-weight: 200;
+  font-size: 1.2rem;
+  font-weight: 200;
 }
 
+/* --- Liste des devises --- */
 .currencies {
-	color: var(--color-main);
-	overflow-y: auto;
+  color: var(--color-main);
+  overflow-y: auto;
 }
 
 .currency {
-	font-size: 1.5rem;
-	border-top: 1px solid var(--color-alt);
-	transition: background-color 0.2s ease;
-	padding: 0.7rem 1.2rem;
-	text-align: left;
+  font-size: 1.5rem;
+  border-top: 1px solid var(--color-alt);
+  padding: 0.7rem 1.2rem;
+  text-align: left;
+  transition: background-color 0.2s ease;
 }
 
 .currency:hover {
-	background-color: var(--color-alt);
-	transition: background-color 0.2s;
+  background-color: var(--color-alt);
 }
 
 .selected {
-	background-color: var(--color-alt);
-	transition: background-color 0.2s;
+  background-color: var(--color-alt);
 }
 
 .currency__button {
-	width: 100%;
-	font-size: 1rem;
-	font-weight: 500;
-	cursor: pointer;
-	padding: 0.3rem 0;
-	text-align: left;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.3rem 0;
+  text-align: left;
 }
 
 .currency__details {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
 }
 
 .currency__rate {
-    font-size: 0.9rem;
-    font-weight: 400;
-    opacity: 0.8;
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.8;
 }
 
+/* --- Résultat / Footer --- */
 .result {
-	color: var(--color-main);
-	margin: 2rem;
-	padding: 0.3rem;
+  color: var(--color-main);
+  margin: 2rem;
+  padding: 0.3rem;
 }
 
 .result__amount {
-	font-size: 2.5rem;
-	font-weight: 600;
+  font-size: 2.5rem;
+  font-weight: 600;
 }
 
 .result__currency {
-	font-size: 1.4rem;
-	margin-top: 1rem;
+  font-size: 1.4rem;
+  margin-top: 1rem;
 }
 
-  .result__button {
-    margin-top: 1rem;
+.result__button {
+  margin-top: 1rem;
 }
 
-  .result__button:hover {
-    background-color: var(--color-main);
-    color: var(--color-light);
-  }
-
-/* --- Buttons --- */
+/* --- Boutons génériques --- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -175,4 +178,3 @@ body {
 .btn--full {
   width: 100%;
 }
-
