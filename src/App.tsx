@@ -24,10 +24,14 @@ export default function App() {
       </header>
 
       <ul className="currencies">
-        <Currency
-          setCurrentCurrency={setCurrentCurrency}
-          currentCurrency={currentCurrency}
-        />
+        {currencies.map((currency) => (
+          <Currency
+            key={currency.code}
+            currency={currency}
+            setCurrentCurrency={setCurrentCurrency}
+            currentCurrency={currentCurrency}
+          />
+        ))}
       </ul>
       <Footer currentCurrency={currentCurrency} />
     </div>

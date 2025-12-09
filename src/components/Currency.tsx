@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import type { ICurrency } from '../data/currencies.ts';
-import currencies from '../data/currencies.ts';
 
 export const Currency = ({
   setCurrentCurrency,
   currentCurrency,
+  currency,
 }: {
   setCurrentCurrency: (currency: ICurrency) => void;
   currentCurrency: ICurrency;
+  currency: ICurrency;
 }) => {
   function handleCurrentCurrencyClick(banane: ICurrency) {
     setCurrentCurrency(banane);
@@ -18,8 +19,8 @@ export const Currency = ({
     setIsVisible(!isVisible);
   };
 
-  return currencies.map((currency: ICurrency) => (
-    <li className="currency" key={currency.code}>
+  return (
+    <li className="currency">
       {isVisible ? (
         <button
           type="button"
@@ -55,5 +56,5 @@ export const Currency = ({
         {currency.description}
       </button>
     </li>
-  ));
+  );
 };
