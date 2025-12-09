@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import currencies, { ICurrency } from './data/currencies';
+import Footer from './component/Footer';
 
 export default function App() {
 
@@ -42,11 +43,13 @@ export default function App() {
 				)}
 			</ul>
 
-			<footer className="result">
+			{/*<footer className="result">
 				<div className="result__amount">{isRounded ? currentCurrency.rate.toFixed(2) : currentCurrency.rate}</div>
 				<div className="result__currency">{currentCurrency.description}</div>
 				<button onClick={handleRoundClick} type="button" className="result__button" >{isRounded ? "Désarondir" : "Arrondir"}</button>
-			</footer>
+			</footer>*/}
+
+			<Footer currentCurrency={currentCurrency} isRounded={isRounded} handleRoundClick={handleRoundClick} />
 		</div>
 	);
 }
