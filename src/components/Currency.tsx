@@ -14,7 +14,7 @@ export default function diplayCurrency({onClick, currency, currentCurrency}: Iel
 			: "currency__button"
 			}
 		>
-				{currency.description}
+				{currency.description} ({currency.rate.toFixed(2)})
 		</button>
 	</li>
 
