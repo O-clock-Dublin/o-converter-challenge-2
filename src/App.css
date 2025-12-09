@@ -68,6 +68,7 @@ body {
 }
 
 .currency {
+	display: flex;
 	font-size: 1.5rem;
 	border-top: 1px solid var(--color-alt);
 	transition: background-color 1s;
@@ -121,4 +122,8 @@ body {
   .result__button:hover {
     background-color: var(--color-main);
     color: var(--color-light);
+  }
+
+  .HandleButtonHide {
+	margin: 0 1rem;
   }

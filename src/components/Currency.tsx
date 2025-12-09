@@ -17,8 +17,15 @@ export default function diplayCurrency({onClick, currency, currentCurrency}: Iel
 			}
 		>
 				{currency.description} {initialIsRate ? `(${currency.rate.toFixed(2)})` : ""}  
-				<button onClick={()=> setInitialIsRate(!initialIsRate)} className="handleHide" type="button"> {initialIsRate ? "❌" : "👀"}</button>
+				
 		</button>
+		<button onClick={()=> setInitialIsRate(!initialIsRate)} 
+		className=
+		"HandleButtonHide" 
+		type=
+		"button"> {initialIsRate ? "❌" : "👀"}
+		</button>
+
 	</li>
 
 		)
