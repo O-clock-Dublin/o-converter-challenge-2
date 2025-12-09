@@ -1,10 +1,11 @@
 // src/App.tsx
 import { useState } from "react";
 import "./App.css";
-import currencies, { ICurrency } from "./data/currencies";
+import type { ICurrency } from "./data/currencies";
 import Footer from "./components/Footer";
-import Currency from "./components/Currency";
+import currencies from "./data/currencies";
 import Header from "./components/Header";
+import CurrenciesList from "./components/CurrenciesList";
 
 /**
  * Composant principal de l'application de conversion.
@@ -38,19 +39,12 @@ export default function App() {
 
   return (
     <div className="app">
-		<Header />
+	  <Header />
 
-<ul className="currencies">
-  {currencies.map((currency) => (
-    <Currency
-      key={currency.code}
-      currency={currency}
-      isSelected={currency.code === currentCurrency.code}
-      onClick={() => handleCurrentCurrencyClick(currency)}
-    />
-  ))}
-</ul>
-
+      <CurrenciesList
+        currentCurrency={currentCurrency}
+        onCurrencyClick={handleCurrentCurrencyClick}
+      />
 
       {/* Le Footer reçoit la devise courante via les props */}
       <Footer currentCurrency={currentCurrency} />
