@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import currencies, { ICurrency } from "./data/currencies";
 import Footer from "./components/Footer";
+import Currency from "./components/Currency";
 
 /**
  * Composant principal de l'application de conversion.
@@ -41,26 +42,17 @@ export default function App() {
         <div className="header__value">1 euro</div>
       </header>
 
-      <ul className="currencies">
-        {currencies.map((currency) => (
-          <li
-            className={
-              currency.code === currentCurrency.code
-                ? "currency selected"
-                : "currency"
-            }
-            key={currency.code}
-          >
-            <button
-              type="button"
-              onClick={() => handleCurrentCurrencyClick(currency)}
-              className="currency__button"
-            >
-              {currency.description}
-            </button>
-          </li>
-        ))}
-      </ul>
+<ul className="currencies">
+  {currencies.map((currency) => (
+    <Currency
+      key={currency.code}
+      currency={currency}
+      isSelected={currency.code === currentCurrency.code}
+      onClick={() => handleCurrentCurrencyClick(currency)}
+    />
+  ))}
+</ul>
+
 
       {/* Le Footer reçoit la devise courante via les props */}
       <Footer currentCurrency={currentCurrency} />
