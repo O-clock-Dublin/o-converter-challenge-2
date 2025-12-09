@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { ICurrency } from '../data/currencies.ts';
 import currencies from '../data/currencies.ts';
 
@@ -11,9 +12,34 @@ export const Currency = ({
   function handleCurrentCurrencyClick(banane: ICurrency) {
     setCurrentCurrency(banane);
   }
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleVisibleClick = (isVisible: boolean) => {
+    setIsVisible(!isVisible);
+  };
 
   return currencies.map((currency: ICurrency) => (
     <li className="currency" key={currency.code}>
+      {isVisible ? (
+        <button
+          type="button"
+          onClick={() => {
+            handleVisibleClick(isVisible);
+          }}
+        >
+          👀
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={() => {
+            handleVisibleClick(isVisible);
+          }}
+        >
+          ❌
+        </button>
+      )}
+
       <button
         type="button"
         onClick={() => handleCurrentCurrencyClick(currency)}

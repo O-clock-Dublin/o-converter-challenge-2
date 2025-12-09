@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { Currency } from './components/Currency.tsx';
 import { Footer } from './components/Footer.tsx';
-import currencies, { type ICurrency } from './data/currencies';
+import currencies from './data/currencies';
 
 export default function App() {
   // On crée un state afin de manipuler la devise courante
