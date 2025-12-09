@@ -1,0 +1,124 @@
+/* --- Fonts --- */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+
+/* --- Variables CSS --- */
+:root {
+	--color-main: #bb5432;
+	--color-alt: #f1c5b6;
+	--color-light: #fff;
+}
+
+/* --- Reset --- */
+* {
+	margin: 0;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+button {
+	color: inherit;
+	background-color: inherit;
+	border: none;
+}
+
+/* --- Commons --- */
+body {
+	font-family: "League Spartan", sans-serif;
+	background-color: var(--color-alt);
+}
+
+/* --- App component --- */
+.app {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	height: 100vh;
+	width: 80%;
+	max-width: 768px;
+	margin: 0 auto;
+	color: var(--color-main);
+	background-color: var(--color-light);
+	text-align: center;
+}
+
+.header {
+	background-color: var(--color-main);
+	color: var(--color-light);
+	padding: 2rem;
+	letter-spacing: .2rem;
+	font-weight: 300;
+}
+
+.header__title {
+	font-size: 2.5rem;
+	font-weight: 500;
+	margin-bottom: 1rem;
+}
+
+.header__value {
+	font-size: 1.2rem;
+	font-weight: 200;
+}
+
+.currencies {
+	color: var(--color-main);
+	overflow: scroll;
+}
+
+.currency {
+	font-size: 1.5rem;
+	border-top: 1px solid var(--color-alt);
+	transition: background-color 1s;
+}
+
+.currency:hover {
+	background-color: var(--color-alt);
+	transition: background-color 0.2s;
+}
+
+.selected {
+	background-color: var(--color-alt);
+	transition: background-color 0.2s;
+}
+
+.currency__button {
+	width: 100%;
+	font-size: 1rem;
+	font-weight: 400;
+	cursor: pointer;
+	padding: 1rem;
+}
+
+.result {
+	color: var(--color-main);
+	margin: 2rem;
+	padding: 0.3rem;
+}
+
+.result__amount {
+	font-size: 2.5rem;
+	font-weight: 600;
+}
+
+.result__currency {
+	font-size: 1.4rem;
+	margin-top: 1rem;
+}
+
+  .result__button {
+    margin-top: 1rem;
+    width: 120px;
+    cursor: pointer;
+    border: 1px solid var(--color-main);
+    padding: 1rem;
+    border-radius: 50px;
+
+    background-color: var(--color-light);
+    color: var(--color-main);
+  }
+  .result__button:hover {
+    background-color: var(--color-main);
+    color: var(--color-light);
+  }
