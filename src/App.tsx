@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import { Currency } from './components/Currency.tsx';
 import { Footer } from './components/Footer.tsx';
 import currencies, { type ICurrency } from './data/currencies';
 
@@ -14,9 +15,6 @@ export default function App() {
   // 	setCurrentCurrency(currency)
   // }
   // On défini une variable placeholder qui sera remplacée par le paramètre d'entrée à l'utilisation de la fonction, ici banane
-  function handleCurrentCurrencyClick(banane: ICurrency) {
-    setCurrentCurrency(banane);
-  }
 
   return (
     <div className="app">
@@ -26,22 +24,7 @@ export default function App() {
       </header>
 
       <ul className="currencies">
-        {/* Je boucle sur chaque entrée de tableau grâce à la variable "currency" et je crée une li pour chaque currency */}
-        {currencies.map((currency) => (
-          <li className="currency" key={currency.code}>
-            <button
-              type="button"
-              onClick={() => handleCurrentCurrencyClick(currency)}
-              className={
-                currency === currentCurrency
-                  ? 'currency__button selected'
-                  : 'currency__button'
-              }
-            >
-              {currency.description}
-            </button>
-          </li>
-        ))}
+        <Currency setCurrentCurrency={setCurrentCurrency} />
       </ul>
       <Footer currentCurrency={currentCurrency} />
     </div>
