@@ -91,6 +91,29 @@ body {
 	padding: 1rem;
 }
 
+.currency__rate {
+	display: inline-block;
+	margin: 0 1rem;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.currency__toggle {
+	font-size: 0.9rem;
+	cursor: pointer;
+	padding: 0.5rem 1rem;
+	border: 1px solid var(--color-main);
+	border-radius: 20px;
+	background-color: var(--color-light);
+	color: var(--color-main);
+	transition: all 0.2s;
+}
+
+.currency__toggle:hover {
+	background-color: var(--color-main);
+	color: var(--color-light);
+}
+
 .result {
 	color: var(--color-main);
 	margin: 2rem;
