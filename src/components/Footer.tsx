@@ -2,27 +2,28 @@ import { useState } from "react";
 import { ICurrency } from "../data/currencies";
 
 interface FooterProps {
-	selectedCurrency: ICurrency;
+  selectedCurrency: ICurrency;
 }
 
 export default function Footer({ selectedCurrency }: FooterProps) {
-	const [isRounded, setIsRounded] = useState(false);
+  const [isRounded, setIsRounded] = useState(false);
 
-	return (
-		<footer className="result">
-			<button type="button" onClick={() => setIsRounded(!isRounded)}>
-				Arrondir
-			</button>
+  function handleRoundClick() {
+    setIsRounded(!isRounded);
+  }
 
-			<div className="result__amount">
-				{isRounded
-					? selectedCurrency.rate.toFixed(2)
-					: selectedCurrency.rate}
-			</div>
+  const displayedRate = isRounded
+    ? selectedCurrency.rate.toFixed(2)
+    : selectedCurrency.rate;
 
-			<div className="result__currency">
-				{selectedCurrency.description}
-			</div>
-		</footer>
-	);
+  return (
+    <footer className="result">
+      <div className="result__amount">{displayedRate}</div>
+      <div className="result__currency">{selectedCurrency.description}</div>
+
+      <button type="button" onClick={handleRoundClick}>
+        {isRounded ? "Afficher brut" : "Arrondir"}
+      </button>
+    </footer>
+  );
 }
