@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ICurrency } from './data/currencies';
+import { ICurrency } from '../data/currencies';
 
 interface CurrencyProps {
 	currency: ICurrency;

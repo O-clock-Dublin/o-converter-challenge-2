@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 import currencies, { ICurrency } from './data/currencies';
-import Footer from './Footer';
-import Currency from './Currency';
+import Footer from './component/Footer';
+import Currency from './/component/Currency';
 
 export default function App() {
 
