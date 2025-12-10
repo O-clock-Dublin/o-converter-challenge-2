@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.css';
-import currencies, { ICurrency } from './data/currencies';
+import currencies from './data/currencies';
+import Footer from './component/Footer';
+import Currency from './component/Currency';
 
 export default function App() {
 
@@ -8,22 +10,6 @@ export default function App() {
 	// on l'initialise avec la première devise du tableau importé
 	// useState on a : const [ ValeurActuelle, modificationDeValeurActuelle ] = useState(valeurDeDépart) ?
 	const [currentCurrency, setCurrentCurrency] = useState(currencies[0])
-	const [isRounded, setIsRounded] = useState(false);
-
-	// On crée une fonction pour selectionner la devise souhaitée
-	// const handleCurrentCurrencyClick = (currency : ICurrency) => {
-	// 	setCurrentCurrency(currency)
-	// }
-	// On défini une variable placeholder qui sera remplacée par le paramètre d'entrée à l'utilisation de la fonction, ici banane
-	function handleCurrentCurrencyClick(banane : ICurrency) {
-		setCurrentCurrency(banane)
-	}
-
-	function handleRoundClick () {
-		setIsRounded(!isRounded)
-	}
-
-	console.log(isRounded)
 
 	return (
 		<div className="app">
@@ -36,17 +22,16 @@ export default function App() {
 
 				{/* Je boucle sur chaque entrée de tableau grâce à la variable "currency" et je crée une li pour chaque currency */}
 				{currencies.map((currency) =>
-					<li className="currency" key={currency.code}>< button type="button" onClick={() => handleCurrentCurrencyClick(currency)} className={currency === currentCurrency ? "currency__button selected" : "currency__button"}>
-						{currency.description}
-					</button></li>
+					<Currency 
+						currency={currency}
+						currentCurrency={currentCurrency}
+						setCurrentCurrency={setCurrentCurrency}
+					/>
 				)}
 			</ul>
-
-			<footer className="result">
-				<div className="result__amount">{isRounded ? currentCurrency.rate.toFixed(2) : currentCurrency.rate}</div>
-				<div className="result__currency">{currentCurrency.description}</div>
-				<button onClick={handleRoundClick} type="button" className="result__button" >{isRounded ? "Désarondir" : "Arrondir"}</button>
-			</footer>
+			<Footer 
+				currentCurrency={currentCurrency}	
+			/>
 		</div>
 	);
 }
